@@ -8,18 +8,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "restaurants")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class Restaurant {
 	@Id
 	@GeneratedValue
 	private Integer id;
 	@Column(nullable = false)
-	private String firstName;
+	private String category;
 	@Column(nullable = false)
-	private String lastName;
+	private String restaurantName;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = true, name = "username")
 	private User user;

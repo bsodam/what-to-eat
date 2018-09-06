@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8"/>
-    <title>고객 정보 편집</title>
+    <title>식당 정보 편집</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"
@@ -10,31 +10,31 @@
 </head>
 <body>
 <div class="container">
-    <h1>고객 관리 시스템</h1>
+    <h1>오늘 뭐 먹지</h1>
     <p>
         <a th:href="@{/logout}" class="btn btn-default btn-xs">로그 아웃</a>
     </p>
     <div class="col-sm-12">
-        <form th:action="@{/customers/edit}" th:object="${customerForm}" class="form-horizontal" method="post">
+        <form th:action="@{/restaurants/edit}" th:object="${restaurantForm}" class="form-horizontal" method="post">
             <fieldset>
-                <legend>고객 정보 편집</legend>
-                <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-error has-feedback'">
-                    <label for="lastName" class="col-sm-2 control-label">성</label>
+                <legend>식당 정보 편집</legend>
+                <div class="form-group" th:classappend="${#fields.hasErrors('category')}? 'has-error has-feedback'">
+                    <label for="category" class="col-sm-2 control-label">카테고리</label>
 
                     <div class="col-sm-10">
-                        <input type="text" id="lastName" name="lastName" th:field="*{lastName}"
-                               class="form-control" value="홍"/>
-                        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                        <input type="text" id="category" name="category" th:field="*{category}"
+                               class="form-control" value="패스트푸드"/>
+                        <span th:if="${#fields.hasErrors('category')}" th:errors="*{category}"
                               class="help-block">error!</span>
                     </div>
                 </div>
-                <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-error has-feedback'">
-                    <label for="firstName" class="col-sm-2 control-label">이름</label>
+                <div class="form-group" th:classappend="${#fields.hasErrors('restaurantName')}? 'has-error has-feedback'">
+                    <label for="restaurantName" class="col-sm-2 control-label">식당 이름</label>
 
                     <div class="col-sm-10">
-                        <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
-                               class="form-control" value="길동"/>
-                        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                        <input type="text" id="restaurantName" name="restaurantName" th:field="*{restaurantName}"
+                               class="form-control" value="맥도날드"/>
+                        <span th:if="${#fields.hasErrors('restaurantName')}" th:errors="*{restaurantName}"
                               class="help-block">error!</span>
                     </div>
                 </div>

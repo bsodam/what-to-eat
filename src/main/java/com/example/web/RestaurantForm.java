@@ -6,11 +6,11 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class CustomerForm {
+public class RestaurantForm {
 	@NotNull
 	@Size(min = 1, max = 127)
-	private String firstName;
+	private String category;
 	@NotNull
 	@Size(min = 1, max = 127)
-	private String lastName;
+	private String restaurantName;
 }

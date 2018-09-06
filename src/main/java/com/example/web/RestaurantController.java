@@ -14,66 +14,66 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.domain.Customer;
-import com.example.service.CustomerService;
+import com.example.domain.Restaurant;
+import com.example.service.RestaurantService;
 import com.example.service.LoginUserDetails;
 
 @Controller
-@RequestMapping("customers")
-public class CustomerController {
+@RequestMapping("restaurants")
+public class RestaurantController {
 	@Autowired
-	CustomerService customerService;
+	RestaurantService restaurantService;
 	
 	@ModelAttribute
-	CustomerForm setUpForm() {
-		return new CustomerForm();
+	RestaurantForm setUpForm() {
+		return new RestaurantForm();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	String list(Model model) {
-		List<Customer> customers = customerService.findAll();
-		model.addAttribute("customers", customers);
-		return "customers/list";
+		List<Restaurant> restaurants = restaurantService.findAll();
+		model.addAttribute("restaurants", restaurants);
+		return "restaurants/list";
 	}
 	
 	@RequestMapping(value = "create", method = RequestMethod.POST)
-	String create(@Validated CustomerForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDetails) {
+	String create(@Validated RestaurantForm form, BindingResult result, Model model, @AuthenticationPrincipal LoginUserDetails userDetails) {
 		if (result.hasErrors()) {
 			return list(model);
 		}
-		Customer customer = new Customer();
-		BeanUtils.copyProperties(form, customer);
-		customerService.create(customer, userDetails.getUser());
-		return "redirect:/customers";
+		Restaurant restaurant = new Restaurant();
+		BeanUtils.copyProperties(form, restaurant);
+		restaurantService.create(restaurant, userDetails.getUser());
+		return "redirect:/restaurants";
 	}
 	
 	@RequestMapping(value = "edit", params = "form", method = RequestMethod.GET)
-	String editForm(@RequestParam Integer id, CustomerForm form) {
-		Customer customer = customerService.findOne(id);
-		BeanUtils.copyProperties(customer, form);
-		return "customers/edit";
+	String editForm(@RequestParam Integer id, RestaurantForm form) {
+		Restaurant restaurant = restaurantService.findOne(id);
+		BeanUtils.copyProperties(restaurant, form);
+		return "restaurants/edit";
 	}
 	
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
-	String edit(@RequestParam Integer id, @Validated CustomerForm form, BindingResult result, @AuthenticationPrincipal LoginUserDetails userDetails) {
+	String edit(@RequestParam Integer id, @Validated RestaurantForm form, BindingResult result, @AuthenticationPrincipal LoginUserDetails userDetails) {
 		if(result.hasErrors()) {
 			return editForm(id, form);
 		}
-		Customer customer = new Customer();
-		BeanUtils.copyProperties(form, customer);
-		customer.setId(id);
-		customerService.update(customer, userDetails.getUser());
-		return "redirect:/customers";
+		Restaurant restaurant = new Restaurant();
+		BeanUtils.copyProperties(form, restaurant);
+		restaurant.setId(id);
+		restaurantService.update(restaurant, userDetails.getUser());
+		return "redirect:/restaurants";
 	}
 	
 	@RequestMapping(value = "edit", params = "goToTop")
 	String goToTop() {
-		return "redirect:/customers";
+		return "redirect:/restaurants";
 	}
 	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	String edit(@RequestParam Integer id) {
-		customerService.delete(id);
-		return "redirect:/customers";
+		restaurantService.delete(id);
+		return "redirect:/restaurants";
 	}
 }

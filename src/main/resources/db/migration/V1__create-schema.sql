@@ -1,1 +1,1 @@
-CREATE TABLE customers (id INT PRIMARY KEY AUTO_INCREMENT, first_name VARCHAR(30), last_name VARCHAR(30));
+CREATE TABLE restaurants (id INT PRIMARY KEY AUTO_INCREMENT, category VARCHAR(30), restaurant_name VARCHAR(30));

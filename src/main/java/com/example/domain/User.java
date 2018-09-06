@@ -16,7 +16,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-@ToString(exclude = "customers")
+@ToString(exclude = "restaurants")
 public class User {
 	@Id
 	private String username;
@@ -24,5 +24,5 @@ public class User {
 	private String encodedPassword;
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-	private List<Customer> customers;
+	private List<Restaurant> restaurants;
 }

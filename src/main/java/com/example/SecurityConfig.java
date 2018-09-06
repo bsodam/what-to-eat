@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginProcessingUrl("/login")
 			.loginPage("/loginForm")
 			.failureUrl("/loginForm?error")
-			.defaultSuccessUrl("/customers", true)
+			.defaultSuccessUrl("/restaurants", true)
 			.usernameParameter("username").passwordParameter("password")
 			.and();
 		http.logout()
