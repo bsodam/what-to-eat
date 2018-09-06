@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: hajiboot-thymeleaf
+Implementation-Title: what-to-eat
 Implementation-Version: 1.0.0-SNAPSHOT
 Built-By: baek_
 Implementation-Vendor-Id: com.example
