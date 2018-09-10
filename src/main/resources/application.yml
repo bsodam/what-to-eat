@@ -4,6 +4,7 @@ spring:
     url: jdbc:h2:file:~/tmp/restaurant;
     username: sa
     password:
+    sqlScriptEncoding: UTF-8
   jpa:
     hibernate:
       ddl-auto: validate
